@@ -5,9 +5,8 @@ class WeatherModel {
   WeatherModel({this.location, this.current});
 
   WeatherModel.fromJson(Map<String, dynamic> json) {
-    location = json['location'] != null
-        ? Location.fromJson(json['location'])
-        : null;
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
     current =
         json['current'] != null ? Current.fromJson(json['current']) : null;
   }
@@ -28,30 +27,16 @@ class Location {
   String? name;
   String? region;
   String? country;
-  double? lat;
-  double? lon;
   String? tzId;
-  int? localtimeEpoch;
   String? localtime;
 
-  Location(
-      {this.name,
-      this.region,
-      this.country,
-      this.lat,
-      this.lon,
-      this.tzId,
-      this.localtimeEpoch,
-      this.localtime});
+  Location({this.name, this.region, this.country, this.tzId, this.localtime});
 
   Location.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     region = json['region'];
     country = json['country'];
-    lat = json['lat'];
-    lon = json['lon'];
     tzId = json['tz_id'];
-    localtimeEpoch = json['localtime_epoch'];
     localtime = json['localtime'];
   }
 
@@ -60,64 +45,48 @@ class Location {
     data['name'] = name;
     data['region'] = region;
     data['country'] = country;
-    data['lat'] = lat;
-    data['lon'] = lon;
     data['tz_id'] = tzId;
-    data['localtime_epoch'] = localtimeEpoch;
     data['localtime'] = localtime;
     return data;
   }
 }
 
 class Current {
-  int? lastUpdatedEpoch;
+  num? lastUpdatedEpoch;
   String? lastUpdated;
-  double? tempC;
-  double? tempF;
-  int? isDay;
+  num? tempC;
+  num? tempF;
+  num? isDay;
   Condition? condition;
-  double? windMph;
-  double? windKph;
-  int? windDegree;
+  num? windMph;
+  num? windKph;
+  num? windDegree;
   String? windDir;
-  int? pressureMb;
-  double? pressureIn;
-  int? precipMm;
-  int? precipIn;
-  int? humidity;
-  int? cloud;
-  double? feelslikeC;
-  double? feelslikeF;
-  int? visKm;
-  int? visMiles;
-  int? uv;
-  double? gustMph;
-  double? gustKph;
+  num? pressureMb;
+  num? pressureIn;
+  num? precipMm;
+  num? precipIn;
+  num? humidity;
+  num? cloud;
 
-  Current(
-      {this.lastUpdatedEpoch,
-      this.lastUpdated,
-      this.tempC,
-      this.tempF,
-      this.isDay,
-      this.condition,
-      this.windMph,
-      this.windKph,
-      this.windDegree,
-      this.windDir,
-      this.pressureMb,
-      this.pressureIn,
-      this.precipMm,
-      this.precipIn,
-      this.humidity,
-      this.cloud,
-      this.feelslikeC,
-      this.feelslikeF,
-      this.visKm,
-      this.visMiles,
-      this.uv,
-      this.gustMph,
-      this.gustKph});
+  Current({
+    this.lastUpdatedEpoch,
+    this.lastUpdated,
+    this.tempC,
+    this.tempF,
+    this.isDay,
+    this.condition,
+    this.windMph,
+    this.windKph,
+    this.windDegree,
+    this.windDir,
+    this.pressureMb,
+    this.pressureIn,
+    this.precipMm,
+    this.precipIn,
+    this.humidity,
+    this.cloud,
+  });
 
   Current.fromJson(Map<String, dynamic> json) {
     lastUpdatedEpoch = json['last_updated_epoch'];
@@ -138,13 +107,6 @@ class Current {
     precipIn = json['precip_in'];
     humidity = json['humidity'];
     cloud = json['cloud'];
-    feelslikeC = json['feelslike_c'];
-    feelslikeF = json['feelslike_f'];
-    visKm = json['vis_km'];
-    visMiles = json['vis_miles'];
-    uv = json['uv'];
-    gustMph = json['gust_mph'];
-    gustKph = json['gust_kph'];
   }
 
   Map<String, dynamic> toJson() {
@@ -167,13 +129,6 @@ class Current {
     data['precip_in'] = precipIn;
     data['humidity'] = humidity;
     data['cloud'] = cloud;
-    data['feelslike_c'] = feelslikeC;
-    data['feelslike_f'] = feelslikeF;
-    data['vis_km'] = visKm;
-    data['vis_miles'] = visMiles;
-    data['uv'] = uv;
-    data['gust_mph'] = gustMph;
-    data['gust_kph'] = gustKph;
     return data;
   }
 }
@@ -181,7 +136,7 @@ class Current {
 class Condition {
   String? text;
   String? icon;
-  int? code;
+  num? code;
 
   Condition({this.text, this.icon, this.code});
 
