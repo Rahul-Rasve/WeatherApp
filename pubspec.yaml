@@ -40,7 +40,7 @@ dependencies:
   # url_launcher: ^6.1.10
   # sizer: ^2.0.15
   # flutter_svg: ^2.0.2
-  # intl: ^0.18.0
+  intl: ^0.18.0
   # state_notifier: ^0.7.2+1
   # connectivity_plus: ^3.0.3
   http: ^0.13.5
@@ -91,10 +91,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: TiltNeon
+      fonts:
+        - asset: fonts/TiltNeon-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
