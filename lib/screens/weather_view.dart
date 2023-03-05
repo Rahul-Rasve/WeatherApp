@@ -22,7 +22,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<WeatherModel> getWeather() async {
     final response = await http.get(
       Uri.parse(
-        'https://weatherapi-com.p.rapidapi.com/current.json?q=Pune&rapidapi-key=95f7037016msh850a5f58bc3afb7p1f4bb3jsnfd374fab7e65',
+        'https://weatherapi-com.p.rapidapi.com/current.json?q=Pune&rapidapi-key=[your_api_key]',
       ),
     );
 
