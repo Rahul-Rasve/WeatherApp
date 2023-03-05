@@ -1,16 +1,14 @@
-# weather_app
+# Mausam
 
-A new Flutter project.
+Checkout the real time weather.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table>
+  <tr>
+    <tr>
+      <th scope="col">Weather Page</th>
+    </tr>
+    <tr scope="row">
+      <td><img src="https://github.com/Rahul-Rasve/WeatherApp/blob/master/screenshots/WeatherPage.png"></td>
+    </tr>
+ </tr>
+</table>
