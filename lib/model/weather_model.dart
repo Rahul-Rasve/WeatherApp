@@ -26,18 +26,25 @@ class WeatherModel {
 class Location {
   String? name;
   String? region;
+  String? country;
 
-  Location({this.name, this.region,});
+  Location({
+    this.name,
+    this.region,
+    this.country,
+  });
 
   Location.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     region = json['region'];
+    country = json['country'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['region'] = region;
+    data['country'] = country;
     return data;
   }
 }
