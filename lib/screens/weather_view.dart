@@ -65,9 +65,9 @@ class _WeatherPageState extends State<WeatherPage> {
                   onSubmitted: (value) {
                     setState(() {
                       city = value;
+                      FocusScope.of(context).unfocus();
                     });
                   },
-                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   controller: cityController,
                   cursorColor: blackColor,
                   textAlign: TextAlign.center,
