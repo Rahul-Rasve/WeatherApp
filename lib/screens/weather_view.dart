@@ -170,7 +170,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'TiltNeon',
                                         ),
-                                        // overflow: TextOverflow.ellipsis,
                                       ),
                                     ],
                                   ),
