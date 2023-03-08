@@ -147,30 +147,33 @@ class _WeatherPageState extends State<WeatherPage> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.baseline,
-                                  textBaseline: TextBaseline.alphabetic,
-                                  children: [
-                                    Text(
-                                      '${snapshot.data!.location!.name}, ',
-                                      style: TextStyle(
-                                        fontSize: 30.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'TiltNeon',
-                                        color: blackColor,
+                                FittedBox(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.baseline,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Text(
+                                        '${snapshot.data!.location!.name}, ',
+                                        style: TextStyle(
+                                          fontSize: 30.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'TiltNeon',
+                                          color: blackColor,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      '${snapshot.data!.location!.country}',
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: 'TiltNeon',
+                                      Text(
+                                        '${snapshot.data!.location!.country}',
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'TiltNeon',
+                                        ),
+                                        // overflow: TextOverflow.ellipsis,
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 40.0,
