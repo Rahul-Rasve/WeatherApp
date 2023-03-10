@@ -59,7 +59,7 @@ class _WeatherPageState extends State<WeatherPage> {
           child: Column(
             children: [
               SizedBox(
-                width: 300.0,
+                width: 350.0,
                 child: TextField(
                   enableInteractiveSelection: true,
                   onSubmitted: (value) {
@@ -74,12 +74,17 @@ class _WeatherPageState extends State<WeatherPage> {
                   keyboardType: TextInputType.name,
                   style: TextStyle(
                     fontFamily: 'TiltNeon',
-                    fontSize: 20.0,
+                    fontSize: 23.0,
                     fontWeight: FontWeight.w500,
                     color: blackColor,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Enter City',
+                    prefixIcon: Icon(
+                      Icons.search_rounded,
+                      color: blackColor,
+                      size: 35.0,
+                    ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40.0),
                       borderSide: BorderSide(
@@ -126,8 +131,8 @@ class _WeatherPageState extends State<WeatherPage> {
                     } else if (snapshot.hasError) {
                       return Center(
                         child: Text(
-                          "Couldn't fetch data,\nTry correcting City name",
-                          maxLines: 2,
+                          "Couldn't fetch data,\nTry correcting City name\nor check Network Connection.",
+                          maxLines: 3,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 25.0,
