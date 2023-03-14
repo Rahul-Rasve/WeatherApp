@@ -73,7 +73,6 @@ class _WeatherPageState extends State<WeatherPage> {
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.name,
                   style: TextStyle(
-                    fontFamily: 'TiltNeon',
                     fontSize: 23.0,
                     fontWeight: FontWeight.w500,
                     color: blackColor,
@@ -116,7 +115,6 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: TextStyle(
                             fontSize: 25.0,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'TiltNeon',
                             color: blackColor,
                           ),
                         ),
@@ -137,7 +135,6 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: TextStyle(
                             fontSize: 25.0,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'TiltNeon',
                             color: blackColor,
                           ),
                         ),
@@ -164,7 +161,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                         style: TextStyle(
                                           fontSize: 30.0,
                                           fontWeight: FontWeight.bold,
-                                          fontFamily: 'TiltNeon',
                                           color: blackColor,
                                         ),
                                       ),
@@ -173,7 +169,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'TiltNeon',
                                         ),
                                       ),
                                     ],
@@ -194,7 +189,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                       DateFormat.MMMEd().format(today),
                                       style: TextStyle(
                                         fontSize: 20.0,
-                                        fontFamily: 'TiltNeon',
                                         color: yellowColor,
                                       ),
                                     ),
@@ -208,7 +202,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                   style: TextStyle(
                                     fontSize: 35.0,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: 'TiltNeon',
                                     color: blackColor,
                                   ),
                                 ),
@@ -224,7 +217,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                       style: TextStyle(
                                         fontSize: 150.0,
                                         fontWeight: FontWeight.w900,
-                                        fontFamily: 'TiltNeon',
                                       ),
                                     ),
                                     Padding(
@@ -235,7 +227,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                         style: TextStyle(
                                           fontSize: 30.0,
                                           fontWeight: FontWeight.bold,
-                                          fontFamily: 'TiltNeon',
                                         ),
                                       ),
                                     ),
@@ -246,7 +237,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                         style: TextStyle(
                                           fontSize: 40.0,
                                           fontWeight: FontWeight.bold,
-                                          fontFamily: 'TiltNeon',
                                         ),
                                       ),
                                     ),

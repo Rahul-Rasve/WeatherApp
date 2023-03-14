@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
         '/home': (context) => SplashScreen(),
         '/weather': (context) => WeatherPage(),
       },
+      theme: ThemeData(
+        fontFamily: 'TiltNeon',
+      ),
     );
   }
 }

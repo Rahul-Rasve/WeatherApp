@@ -31,7 +31,6 @@ class AdditionalInfoCard extends StatelessWidget {
           value,
           style: TextStyle(
             fontSize: 25.0,
-            fontFamily: 'TiltNeon',
             fontWeight: FontWeight.w600,
             color: yellowColor,
           ),
@@ -43,7 +42,6 @@ class AdditionalInfoCard extends StatelessWidget {
           name,
           style: TextStyle(
             fontSize: 20.0,
-            fontFamily: 'TiltNeon',
             fontWeight: FontWeight.w500,
             color: yellowColor,
           ),
