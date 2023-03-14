@@ -1,16 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants.dart';
+import 'package:weather_app/screens/weather_view.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
@@ -22,10 +24,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: yellowColor,
-        body: SizedBox(
+    return Scaffold(
+      body: AnimatedSplashScreen(
+        splash: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Center(
@@ -41,6 +42,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        duration: 1000,
+        animationDuration: Duration(milliseconds: 800),
+        splashIconSize: 300,
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: yellowColor,
+        nextScreen: WeatherPage(),
       ),
     );
   }

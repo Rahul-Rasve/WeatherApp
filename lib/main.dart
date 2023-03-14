@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/home_view.dart';
+import 'package:weather_app/screens/splash_screen.dart';
 import 'package:weather_app/screens/weather_view.dart';
 
 void main() {
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mausam',
-      home: HomePage(),
+      home: SplashScreen(),
       routes: {
-        '/home': (context) => HomePage(),
+        '/home': (context) => SplashScreen(),
         '/weather': (context) => WeatherPage(),
       },
     );
