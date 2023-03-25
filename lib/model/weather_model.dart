@@ -10,17 +10,6 @@ class WeatherModel {
     current =
         json['current'] != null ? Current.fromJson(json['current']) : null;
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (location != null) {
-      data['location'] = location!.toJson();
-    }
-    if (current != null) {
-      data['current'] = current!.toJson();
-    }
-    return data;
-  }
 }
 
 class Location {
@@ -38,14 +27,6 @@ class Location {
     name = json['name'];
     region = json['region'];
     country = json['country'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
-    data['region'] = region;
-    data['country'] = country;
-    return data;
   }
 }
 
@@ -73,18 +54,6 @@ class Current {
     pressureIn = json['pressure_in'];
     humidity = json['humidity'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['temp_c'] = tempC;
-    if (condition != null) {
-      data['condition'] = condition!.toJson();
-    }
-    data['wind_kph'] = windKph;
-    data['pressure_in'] = pressureIn;
-    data['humidity'] = humidity;
-    return data;
-  }
 }
 
 class Condition {
@@ -94,11 +63,5 @@ class Condition {
 
   Condition.fromJson(Map<String, dynamic> json) {
     text = json['text'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['text'] = text;
-    return data;
   }
 }
