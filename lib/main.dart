@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
       },
       theme: ThemeData(
         fontFamily: 'TiltNeon',
+        textSelectionTheme: TextSelectionThemeData(
+          selectionHandleColor: Colors.black, //bubble under the cursor
+        ),
       ),
     );
   }

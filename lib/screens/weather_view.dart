@@ -10,8 +10,6 @@ import 'package:weather_app/components/temperature_display.dart';
 import 'package:weather_app/constants.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
-import 'package:weather_app/widgets/additional_info_card.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -27,7 +25,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<WeatherModel> getWeather() async {
     final response = await http.get(
       Uri.parse(
-        'https://weatherapi-com.p.rapidapi.com/current.json?q=$city&rapidapi-key=[yourAPIkey]',
+        'https://weatherapi-com.p.rapidapi.com/current.json?q=$city&rapidapi-key=[YOUR API key]',
       ),
     );
 
@@ -72,6 +70,11 @@ class _WeatherPageState extends State<WeatherPage> {
                       FocusScope.of(context).unfocus();
                     });
                   },
+                  onTapOutside: (event) {
+                    setState(() {
+                      FocusScope.of(context).unfocus();
+                    });
+                  },
                   controller: cityController,
                   cursorColor: blackColor,
                   textAlign: TextAlign.center,
@@ -81,27 +84,8 @@ class _WeatherPageState extends State<WeatherPage> {
                     fontWeight: FontWeight.w500,
                     color: blackColor,
                   ),
-                  decoration: InputDecoration(
-                    hintText: 'Enter City',
-                    prefixIcon: Icon(
-                      Icons.search_rounded,
-                      color: blackColor,
-                      size: 35.0,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                      borderSide: BorderSide(
-                        color: blackColor,
-                        width: 4.0,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                      borderSide: BorderSide(
-                        color: blackColor,
-                        width: 2.0,
-                      ),
-                    ),
+                  decoration: inputDecor(
+                    hintText: 'Search City',
                   ),
                 ),
               ),
@@ -113,6 +97,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   future: getWeather(),
                   builder: ((context, snapshot) {
                     if (city == '') {
+                      //on empty search field
                       return Center(
                         child: Text(
                           'Search for a City',
@@ -131,9 +116,10 @@ class _WeatherPageState extends State<WeatherPage> {
                         ),
                       );
                     } else if (snapshot.hasError) {
+                      //error handling
                       return Center(
                         child: Text(
-                          "Couldn't fetch data,\nTry correcting City name\nor check Network Connection.",
+                          """Couldn't fetch data,\nTry correcting City name\nor check Network Connection.""",
                           maxLines: 3,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -144,6 +130,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         ),
                       );
                     } else {
+                      //successful fetch
                       return RefreshIndicator(
                         color: yellowColor,
                         backgroundColor: Colors.black,
