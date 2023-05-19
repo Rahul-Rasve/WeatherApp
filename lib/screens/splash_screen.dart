@@ -15,11 +15,15 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(
-      Duration(seconds: 3),
-    ).then((value) => Navigator.pushNamedAndRemoveUntil(
-        context, '/weather', (route) => false));
     super.initState();
+    Future.delayed(Duration(seconds: 3)).then((_) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => WeatherPage(),
+        ),
+      );
+    });
   }
 
   @override

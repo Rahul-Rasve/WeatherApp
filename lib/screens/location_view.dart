@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:weather_app/components/additional_info.dart';
 import 'package:weather_app/components/city_name.dart';
 import 'package:weather_app/components/date_display.dart';
@@ -10,20 +13,56 @@ import 'package:weather_app/components/temperature_display.dart';
 import 'package:weather_app/constants.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/screens/location_view.dart';
 
-class WeatherPage extends StatefulWidget {
-  const WeatherPage({
-    super.key,
-  });
+class LocationPage extends StatefulWidget {
+  const LocationPage({super.key});
 
   @override
-  State<WeatherPage> createState() => _WeatherPageState();
+  State<LocationPage> createState() => _LocationPageState();
 }
 
-class _WeatherPageState extends State<WeatherPage> {
+class _LocationPageState extends State<LocationPage> {
   final today = DateTime.now();
   String? city = '';
+
+  Future<bool> requestLocationPermission() async {
+    PermissionStatus permission = await Permission.location.request();
+    return permission == PermissionStatus.granted;
+  }
+
+  Future<Position> getCurrentLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    return position;
+  }
+
+  Future<String> getCityName(Position position) async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+      position.latitude,
+      position.longitude,
+    );
+    if (placemarks.isNotEmpty) {
+      Placemark placemark = placemarks[0];
+      String cityName = placemark.locality!;
+      return cityName;
+    }
+    return "Unknown";
+  }
+
+  void getLocationAndCityName() async {
+    bool hasLocationPermission = await requestLocationPermission();
+    if (hasLocationPermission) {
+      Position position = await getCurrentLocation();
+      String cityName = await getCityName(position);
+      setState(() {
+        city = cityName;
+      });
+      debugPrint('City Name: $cityName');
+    } else {
+      debugPrint('Location permission not granted');
+    }
+  }
 
   Future<WeatherModel> getWeather() async {
     final response = await http.get(
@@ -42,14 +81,10 @@ class _WeatherPageState extends State<WeatherPage> {
     }
   }
 
-  late Future<WeatherModel> myWeather;
-  late Future<String> cityValue;
-  TextEditingController? cityController;
-
   @override
   void initState() {
     super.initState();
-    myWeather = getWeather();
+    getLocationAndCityName();
   }
 
   @override
@@ -65,51 +100,18 @@ class _WeatherPageState extends State<WeatherPage> {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 300.0,
-                    child: TextField(
-                      enableInteractiveSelection: true,
-                      onSubmitted: (value) {
-                        setState(() {
-                          city = value;
-                          FocusScope.of(context).unfocus();
-                        });
-                      },
-                      onTapOutside: (event) {
-                        setState(() {
-                          FocusScope.of(context).unfocus();
-                        });
-                      },
-                      controller: cityController,
-                      cursorColor: blackColor,
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.name,
-                      style: TextStyle(
-                        fontSize: 23.0,
-                        fontWeight: FontWeight.w500,
-                        color: blackColor,
-                      ),
-                      decoration: inputDecor(
-                        hintText: 'Search City',
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
                   IconButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LocationPage(),
-                      ),
-                    ),
-                    padding: EdgeInsets.only(bottom: 5.0),
+                    onPressed: () => Navigator.pop(context),
+                    alignment: Alignment.topLeft,
                     icon: Icon(
-                      Icons.location_on,
+                      Icons.arrow_back_ios_new_rounded,
                       size: 45.0,
                     ),
+                  ),
+                  SizedBox(
+                    width: 10.0,
                   ),
                 ],
               ),
@@ -123,13 +125,8 @@ class _WeatherPageState extends State<WeatherPage> {
                     if (city == '') {
                       //on empty search field
                       return Center(
-                        child: Text(
-                          'Search for a City',
-                          style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w700,
-                            color: blackColor,
-                          ),
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
                         ),
                       );
                     } else if (snapshot.connectionState ==

@@ -33,7 +33,7 @@ class CityName extends StatelessWidget {
             countryName,
             style: TextStyle(
               fontSize: 20.0,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
